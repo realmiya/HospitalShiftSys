@@ -1,6 +1,7 @@
 # how to run it
 git clone it
-npm i
+`npm i` to install all package
+
 `npm run server` to run the mongodb
 
 `npm run jsonserver` to run a fakebackend
