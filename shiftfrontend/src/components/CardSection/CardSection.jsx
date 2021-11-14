@@ -4,6 +4,7 @@ import './cardSection.scss';
 import { Rate } from 'antd';
 import 'antd/dist/antd.css';
 
+
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
     const [allHospitals, setAllHospitals] = useState([]);
@@ -107,6 +108,9 @@ export default function CardSection() {
             {shiftData.map((each, index) => {
                 return (
                     <>
+
+
+
                         <div key={`${each} ${index}`} className="CardWrapper">
                             <div key={each.shiftId} className="timeCard">
                                 <div className="date">
