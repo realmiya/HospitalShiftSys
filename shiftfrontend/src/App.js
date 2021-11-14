@@ -1,9 +1,9 @@
 import './App.scss';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import DateSection from "./components/DateSection"
+import React from 'react';
+import CardSection from "./components/CardSection"
 import Header from "./components/Header"
 import "./styles/reset.scss";
+
 function App() {
   return (
     <div className="App">
@@ -11,8 +11,11 @@ function App() {
         <Header />
 
         <main className="main">
+
           <div className="shiftCard">
-            <DateSection /></div>
+            <div className="title">Shifts</div>
+            <CardSection />
+          </div>
 
 
         </main>
