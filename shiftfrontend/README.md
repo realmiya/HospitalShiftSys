@@ -1,3 +1,11 @@
+# how to run it
+git clone it
+npm i
+`npm run server` to run the mongodb
+
+`npm run jsonserver` to run a fakebackend
+
+cd shiftfrontend use `npm start`  to run the frontend
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

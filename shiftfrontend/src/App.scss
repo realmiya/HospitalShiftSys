@@ -1,21 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Oxygen:wght@700&display=swap');
+
 
 .App {
   background-color: whitesmoke;
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
   .wrapper {
-    // margin: 10px 35px;
-    min-height:100vh;
-    width:100vw;
+    min-height: 100vh;
+    width: 100vw;
 
     .main {
+
+
+
       .shiftCard {
-        // margin: 100px 0;
-        .title{
-          margin: 0 300px;
-          font-size: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+
+        .inviteText {
+          margin: 20px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .header1 {
+            font-size: 1.363rem;
+            font-weight: 700;
+          }
+
+          .subtitle {
+            font-weight: 300;
+          }
+
+
         }
+
       }
     }
 
