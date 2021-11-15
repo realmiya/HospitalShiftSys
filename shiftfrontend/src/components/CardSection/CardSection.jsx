@@ -80,8 +80,6 @@ export default function CardSection() {
 
     function getCertainHospitalDetail(hospitalID) {
         const numberHospitalId = parseInt(hospitalID);
-        // console.log(allHospitals)
-        // console.log(numberHospitalId);
         const name = allHospitals[numberHospitalId].hospitalName;
         // console.log(name)
         const add = allHospitals[numberHospitalId].address;
@@ -104,14 +102,11 @@ export default function CardSection() {
         console.log("current, so " + showThisWeek);
 
         const weekShiftArray = [];
-        // console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
             const newDateofShift = new Date(shiftData[eachShift].date)
             const newToday = new Date();
-            // console.log(newToday);
             const todaystr = JSON.stringify(newToday);
             const today = new Date(todaystr.split("T")[0]);
-            // console.log(today);
             const DateDiff = newDateofShift - today;
             if (DateDiff < 604800000 && DateDiff >= 0) {
                 weekShiftArray.push(shiftData[eachShift]);
@@ -191,14 +186,6 @@ export default function CardSection() {
             getDate()
         }, [])
 
-    // useEffect(
-    //     () => {
-    //         getCurrentWeekShift()
-    //         // console.log(showThisWeek)
-    //     }, [])
-
-
-
     return (
         <>
 
@@ -217,7 +204,7 @@ export default function CardSection() {
                 }}
                     className="navBtn"><FiChevronRight /></button>
             </div>
-            <button onClick={() => { getCurrentWeekShift() }}>show this weeks' shifts</button>
+            <button onClick={() => { getCurrentWeekShift() }}>show this 7 days' shifts</button>
 
             {showThisWeek ? thisWeekShift.map((each, index) => {
                 return (
@@ -236,8 +223,6 @@ export default function CardSection() {
 
                                 <div className="type">{getType(each)}</div>
                                 <div className="pay">{getPay(each)}</div>
-
-
 
                             </div>
 
@@ -276,13 +261,7 @@ export default function CardSection() {
                         </>
                     )
                 })
-
             }
-
-
-
         </>
-
-
     )
 }
