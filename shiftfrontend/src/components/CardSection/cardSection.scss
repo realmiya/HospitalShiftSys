@@ -1,3 +1,4 @@
+@import "../../styles/variable.scss";
 .weekNav {
     display: flex;
     margin: 20px;
@@ -85,7 +86,7 @@ font-size: 30px;
 
         .applyButton {
             color: white;
-            background-color: #29334F;
+            background-color:$primaryBlueColor;
             padding: 5px 15px;
             margin-right: 20px;
             font-weight: 700;
