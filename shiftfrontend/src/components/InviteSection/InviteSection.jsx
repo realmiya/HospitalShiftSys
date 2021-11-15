@@ -3,7 +3,9 @@ import axios from 'axios';
 import './inviteSection.scss';
 import { Rate } from 'antd';
 import 'antd/dist/antd.css';
-
+import { FiSun } from "react-icons/fi";
+import { FiMoon } from "react-icons/fi";
+import { FiSunset } from "react-icons/fi";
 
 export default function InviteSection() {
 
@@ -51,14 +53,27 @@ export default function InviteSection() {
         return pay
 
     }
+    function getTimeIcon(each) {
+        const timestr = getTime(each)
+        const signal = timestr.slice(5, 7);
+        const afternoonTimeClock = timestr.slice(1, 2);
+        return (
+
+            <div>
+                {signal == 'AM' && <FiSun />}
+                {signal == 'PM' && afternoonTimeClock > 6 && <FiMoon />}
+                {signal == 'PM' && afternoonTimeClock < 6 && <FiSunset />}
+
+            </div>
+        )
+
+    }
 
 
     async function getShift() {
         try {
             const allShift = await axios.get('http://localhost:5000/api/shifts');
-
             setShiftData(allShift.data);
-
         } catch (err) {
             console.log(err + "allShiftError")
         }
@@ -67,11 +82,9 @@ export default function InviteSection() {
     async function getAllHospital() {
         try {
             const allHospitalsRes = await axios.get('http://localhost:5000/api/hospitals');
-
             setAllHospitals(allHospitalsRes.data);
 
         } catch (err) {
-
             console.log(err + "Hospital Server Err ")
         }
     }
@@ -79,9 +92,7 @@ export default function InviteSection() {
     async function getAllUsers() {
         try {
             const allUsersRes = await axios.get('http://localhost:5000/api/users');
-
             setAllUsers(allUsersRes.data);
-
         } catch (err) {
 
             console.log(err + "users Server Err ")
@@ -96,27 +107,22 @@ export default function InviteSection() {
 
             }
         }
-        console.log(myDetail)
-        // const thatUser=allUsers
-
+        // console.log(myDetail)
     }
 
     function getInvitedCard() {
         const UserShiftIdArray = []
-        // let shiftIdArray=[]
         for (let each = 0; each < myDetail.invited.length; each++) {
             const invited = myDetail.invited[each].shiftId;
             UserShiftIdArray.push(invited)
 
         }
         setShiftIdArray(UserShiftIdArray)
-        console.log(shiftIdArray)
-
+        // console.log(shiftIdArray)
     }
     function showInvitedCard() {
         const invites = []
-        console.log(shiftIdArray)
-
+        // console.log(shiftIdArray)
         for (let u = 0; u < shiftIdArray.length; u++) {
             shiftData.map((each) => {
                 if (each.shiftId == shiftIdArray[u]) {
@@ -135,10 +141,7 @@ export default function InviteSection() {
 
     function getCertainHospitalDetail(hospitalID) {
         const numberHospitalId = parseInt(hospitalID);
-        // console.log(allHospitals)
-        // console.log(numberHospitalId);
         const name = allHospitals[numberHospitalId].hospitalName;
-        // console.log(name)
         const add = allHospitals[numberHospitalId].address;
         const rate = allHospitals[numberHospitalId].reviewStar;
         const addLine1 = add.split(",")[0];
@@ -182,11 +185,6 @@ export default function InviteSection() {
             <button onClick={() => { getInvitedCard() }}>submit my userID</button>
             <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
 
-            {/* <div className="inviteShiftSection">
-            {inviteDetails}
-            </div> */}
-
-
             {inviteDetails.map((each, index) => {
                 return (
                     <>
@@ -198,6 +196,7 @@ export default function InviteSection() {
                                 <div className="date">
                                     <div className="weekday">{getWeekday(each)}</div>
                                     <div>{eachDateStr(each)}</div>
+                                    <div className="icon"> {getTimeIcon(each)}</div>
                                 </div>
                                 <div className="time">{getTime(each)}</div>
                                 <div className="type">{getType(each)}</div>
