@@ -101,8 +101,8 @@ export default function CardSection() {
 
     function getCurrentWeekShift() {
         setShowThisWeek(true);
-        console.log("current, so "+ showThisWeek);
-        
+        console.log("current, so " + showThisWeek);
+
         const weekShiftArray = [];
         // console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
@@ -113,7 +113,7 @@ export default function CardSection() {
             const today = new Date(todaystr.split("T")[0]);
             // console.log(today);
             const DateDiff = newDateofShift - today;
-            if (DateDiff < 604800000 && DateDiff >=0) {
+            if (DateDiff < 604800000 && DateDiff >= 0) {
                 weekShiftArray.push(shiftData[eachShift]);
             };
         }
@@ -140,8 +140,6 @@ export default function CardSection() {
 
     function getNextWeekShift() {
         setShowThisWeek(false);
-        // console.log("next so "+showThisWeek);
-
         const nextWeekShiftArray = [];
         console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
@@ -158,8 +156,8 @@ export default function CardSection() {
     }
 
     function getDate() {
-        function getWantedStr(input){
-            const inputArray=input.toString().split(" ");
+        function getWantedStr(input) {
+            const inputArray = input.toString().split(" ");
             const ProcessedDate = `${inputArray[1]} ${inputArray[2]} ${inputArray[3]}`;
             return ProcessedDate
         }
@@ -172,7 +170,7 @@ export default function CardSection() {
         newWeekDate.setDate(newToday.getDate() + 7);
         setNewWeekStartDate(getWantedStr(newWeekDate))
         const newWeekEnd = new Date();
-        newWeekEnd.setDate(newToday.getDate() +13);
+        newWeekEnd.setDate(newToday.getDate() + 13);
         setNewWeekEndDate(getWantedStr(newWeekEnd))
     }
 
@@ -193,11 +191,11 @@ export default function CardSection() {
             getDate()
         }, [])
 
-    useEffect(
-        () => {
-            getCurrentWeekShift()
-            console.log(showThisWeek)
-        }, [])
+    // useEffect(
+    //     () => {
+    //         getCurrentWeekShift()
+    //         // console.log(showThisWeek)
+    //     }, [])
 
 
 
@@ -209,16 +207,17 @@ export default function CardSection() {
                     getCurrentWeekShift()
                 }}
                     className="navBtn"><FiChevronLeft /></button>
-                    {showThisWeek?<div className="currentDate">{todayDate} - {weekEndDate}</div>:
+                {showThisWeek ? <div className="currentDate">{todayDate} - {weekEndDate}</div> :
                     <div className="currentDate">{newWeekStartDate} - {newWeekEndDate}</div>}
 
-                
+
                 <button onClick={() => {
                     getNextWeekShift()
 
                 }}
                     className="navBtn"><FiChevronRight /></button>
             </div>
+            <button onClick={() => { getCurrentWeekShift() }}>show this weeks' shifts</button>
 
             {showThisWeek ? thisWeekShift.map((each, index) => {
                 return (
