@@ -4,25 +4,25 @@
       "id": "1",
       "name": "Tianyang Guan",
       "shifts": [{ "shiftId": "1" }, { "shiftId": "2 " }],
-      "invited": [{ "shiftId": "5" }, { "shiftId": "6 " }]
+      "invited": [{ "shiftId": "5" }, { "shiftId": "6" }]
     },
     {
       "id": "2",
       "name": "Raymond",
       "shifts": [{ "shiftId": "4" }],
-      "invited": [{ "shiftId": "5" }, { "shiftId": "6 " }]
+      "invited": [{ "shiftId": "5" }, { "shiftId": "7" }]
     },
     {
-      "id": " 3",
+      "id": "3",
       "name": "Vincent",
       "shifts": [{ "shiftId": "2" }, { "shiftId": "6" }],
-      "invited": [{ "shiftId": "5" }, { "shiftId": "6 " }]
+      "invited": [{ "shiftId": "6" }, { "shiftId": "8" }]
     },
     {
       "id": "4",
       "name": "Alex",
       "shifts": [{ "shiftId": "6" }, { "shiftId": "5" }],
-      "invited": [{ "shiftId": "5" }, { "shiftId": "6 " }]
+      "invited": [{ "shiftId": "5" }, { "shiftId": "6" }]
     }
   ],
   "hospital": [

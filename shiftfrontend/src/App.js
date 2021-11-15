@@ -2,6 +2,7 @@ import './App.scss';
 import React from 'react';
 import CardSection from "./components/CardSection"
 import Header from "./components/Header"
+import InviteSection from "./components/InviteSection"
 import "./styles/reset.scss";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
               <div className="subtitle">You've been invited</div>
             </div>
 
+
+            <InviteSection />
             <CardSection />
           </div>
 
