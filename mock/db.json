@@ -143,12 +143,32 @@
       },
       {
         "shiftId": "11",
-        "name": "shift10",
+        "name": "shift11",
         "hospital_id": "1",
         "shift_type": "1",
         "date": "30 Nov 2021",
         "time": "10:00AM - 10:00PM",
         "pay": "$50/hr",
+        "type": "Critical Care General"
+      },
+      {
+        "shiftId": "12",
+        "name": "shift12",
+        "hospital_id": "0",
+        "shift_type": "1",
+        "date": "21 Nov 2021",
+        "time": "5:00AM - 5:00PM",
+        "pay": "$70/hr",
+        "type": "Critical Care General"
+      },
+      {
+        "shiftId": "13",
+        "name": "shift13",
+        "hospital_id": "1",
+        "shift_type": "1",
+        "date": "22 Nov 2021",
+        "time": "10:00PM - 12:00PM",
+        "pay": "$33/hr",
         "type": "Critical Care General"
       }
   ]
