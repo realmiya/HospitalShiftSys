@@ -7,6 +7,9 @@ git clone it
 `npm run jsonserver` to run a fakebackend
 
 cd shiftfrontend use `npm start`  to run the frontend
+
+after inputing userid, confirm , and submit , then click show my shift invited card, you can see the invitation belongs to the specfic user.
+you can try userid from 1 to 4.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
