@@ -177,10 +177,10 @@ export default function InviteSection() {
                     type="text"
                     onChange={inputHandler}
                 />
-                <button onClick={() => { getUserDetail(userID) }}>This is my userID</button>
+                <button onClick={() => { getUserDetail(userID) }}>confirm my userID</button>
             </div>
-            <button onClick={() => { getInvitedCard() }}>Show My invited ShiftID</button>
-            <button onClick={() => { showInvitedCard() }}>Show My Shift invited card</button>
+            <button onClick={() => { getInvitedCard() }}>submit my userID</button>
+            <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
 
             {/* <div className="inviteShiftSection">
             {inviteDetails}
