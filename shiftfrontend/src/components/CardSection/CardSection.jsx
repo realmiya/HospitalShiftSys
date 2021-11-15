@@ -164,11 +164,11 @@ export default function CardSection() {
                 <button onClick={() => {
                     getCurrentWeekShift()
 
-                }}>This Week's Shifts</button>
+                }}>This 7days' Shifts</button>
                 <button onClick={() => {
                     getNextWeekShift()
 
-                }}>Next Week's Shifts</button>
+                }}>Next 7days Shifts</button>
             </div>
 
             {showThisWeek ? thisWeekShift.map((each, index) => {
