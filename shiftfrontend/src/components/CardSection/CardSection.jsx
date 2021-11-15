@@ -9,6 +9,10 @@ export default function CardSection() {
     const [allHospitals, setAllHospitals] = useState([]);
     const [thisWeekShift, setThisWeekShift] = useState([]);
     const [nextWeekShift, setNextWeekShift] = useState([]);
+    const [showThisWeek, setShowThisWeek] = useState(false);
+    const [showNextWeek, setShowNextWeek] = useState(false);
+
+
     function getWeekday(each) {
         const eachDate = new Date(each.date);
         const weekNumber = eachDate.getDay();
@@ -88,6 +92,9 @@ export default function CardSection() {
     }
 
     function getCurrentWeekShift() {
+        setShowThisWeek(true);
+        // setShowNextWeek((prev)=>(!prev));
+        setShowNextWeek(false);
         const weekShiftArray = [];
         console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
@@ -111,6 +118,10 @@ export default function CardSection() {
     }
 
     function getNextWeekShift() {
+        setShowThisWeek(false);
+        setShowNextWeek(true);
+        // setShowThisWeek((prev)=>(!prev));
+
         const nextWeekShiftArray = [];
         console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
@@ -135,10 +146,6 @@ export default function CardSection() {
 
 
 
-
-
-
-
     useEffect(
         () => {
             getAllHospital()
@@ -148,15 +155,6 @@ export default function CardSection() {
         () => {
             getShift()
         }, [])
-
-    // useEffect(
-    //     () => {
-    //         getCurrentWeekShift()
-    //     }, [])
-
-
-
-
 
 
 
@@ -173,8 +171,64 @@ export default function CardSection() {
                 }}>Next Week's Shifts</button>
             </div>
 
+            {showThisWeek ? thisWeekShift.map((each, index) => {
+                return (
+                    <>
+                        <div key={`${each} ${index}`} className="CardWrapper">
+                            <div key={each.shiftId} className="timeCard">
+                                <div className="date">
+                                    <div className="weekday">{getWeekday(each)}</div>
+                                    <div>{eachDateStr(each)}</div>
+                                </div>
+                                <div className="time">{getTime(each)}</div>
+                                <div className="type">{getType(each)}</div>
+                                <div className="pay">{getPay(each)}</div>
 
-            {thisWeekShift.map((each, index) => {
+                            </div>
+
+                            <div className="hospitalCard">
+                                {getCertainHospitalDetail(each.hospital_id)}
+                                <div className="applyButton">APPLY</div>
+                            </div>
+
+                        </div>
+                    </>
+                )
+            })
+                : nextWeekShift.map((each, index) => {
+                    return (
+                        <>
+
+
+
+                            <div key={`${each} ${index}`} className="CardWrapper">
+                                <div key={each.shiftId} className="timeCard">
+                                    <div className="date">
+                                        <div className="weekday">{getWeekday(each)}</div>
+                                        <div>{eachDateStr(each)}</div>
+                                    </div>
+                                    <div className="time">{getTime(each)}</div>
+                                    <div className="type">{getType(each)}</div>
+                                    <div className="pay">{getPay(each)}</div>
+
+                                </div>
+
+                                <div className="hospitalCard">
+                                    {getCertainHospitalDetail(each.hospital_id)}
+                                    <div className="applyButton">APPLY</div>
+                                </div>
+
+                            </div>
+                        </>
+                    )
+                })
+
+
+
+
+            }
+
+            {/* {showNextWeek&&nextWeekShift.map((each, index) => {
                 return (
                     <>
 
@@ -200,35 +254,7 @@ export default function CardSection() {
                         </div>
                     </>
                 )
-            })}
-
-            {nextWeekShift.map((each, index) => {
-                return (
-                    <>
-
-
-
-                        <div key={`${each} ${index}`} className="CardWrapper">
-                            <div key={each.shiftId} className="timeCard">
-                                <div className="date">
-                                    <div className="weekday">{getWeekday(each)}</div>
-                                    <div>{eachDateStr(each)}</div>
-                                </div>
-                                <div className="time">{getTime(each)}</div>
-                                <div className="type">{getType(each)}</div>
-                                <div className="pay">{getPay(each)}</div>
-
-                            </div>
-
-                            <div className="hospitalCard">
-                                {getCertainHospitalDetail(each.hospital_id)}
-                                <div className="applyButton">APPLY</div>
-                            </div>
-
-                        </div>
-                    </>
-                )
-            })}
+            })} */}
 
 
 
