@@ -8,6 +8,8 @@ import { Pagination } from 'antd';
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
     const [allHospitals, setAllHospitals] = useState([]);
+    const [thisWeekShift, setThisWeekShift] = useState([]);
+    const [nextWeekShift, setNextWeekShift] = useState([]);
     function getWeekday(each) {
         const eachDate = new Date(each.date);
         const weekNumber = eachDate.getDay();
@@ -67,10 +69,10 @@ export default function CardSection() {
 
     function getCertainHospitalDetail(hospitalID) {
         const numberHospitalId = parseInt(hospitalID);
-        console.log(allHospitals)
-        console.log(numberHospitalId);
+        // console.log(allHospitals)
+        // console.log(numberHospitalId);
         const name = allHospitals[numberHospitalId].hospitalName;
-        console.log(name)
+        // console.log(name)
         const add = allHospitals[numberHospitalId].address;
         const rate = allHospitals[numberHospitalId].reviewStar;
         const addLine1 = add.split(",")[0];
@@ -86,6 +88,58 @@ export default function CardSection() {
         )
     }
 
+    function getCurrentWeekShift() {
+        const weekShiftArray = [];
+        console.log("final" + shiftData.length)
+        for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
+            const newDateofShift = new Date(shiftData[eachShift].date)
+            const newToday = new Date();
+            console.log(newToday);
+            const todaystr = JSON.stringify(newToday);
+            const today = new Date(todaystr.split("T")[0]);
+            console.log(today);
+            const DateDiff = newDateofShift - today;
+            if (DateDiff < 691200000) {
+                weekShiftArray.push(shiftData[eachShift]);
+            };
+
+
+        }
+
+
+        setThisWeekShift(weekShiftArray);
+
+    }
+
+    function getNextWeekShift() {
+        const nextWeekShiftArray = [];
+        console.log("final" + shiftData.length)
+        for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
+            const newDateofShift = new Date(shiftData[eachShift].date)
+            const newToday = new Date();
+            console.log(newToday);
+            const todaystr = JSON.stringify(newToday);
+            const today = new Date(todaystr.split("T")[0]);
+            console.log(today);
+            const DateDiff = newDateofShift - today;
+            if (691200000<DateDiff&& DateDiff < 1296000000) {
+                nextWeekShiftArray.push(shiftData[eachShift]);
+            };
+
+
+        }
+
+
+        setNextWeekShift(nextWeekShiftArray);
+
+    }
+
+
+
+
+
+
+
     useEffect(
         () => {
             getAllHospital()
@@ -96,6 +150,11 @@ export default function CardSection() {
             getShift()
         }, [])
 
+    // useEffect(
+    //     () => {
+    //         getCurrentWeekShift()
+    //     }, [])
+
 
 
 
@@ -105,13 +164,49 @@ export default function CardSection() {
     return (
         <>
             <Pagination
-                // showSizeChanger
                 //   onShowSizeChange={onShowSizeChange}
-                defaultCurrent={3}
-                total={14}
+                defaultCurrent={1}
+                total={shiftData.length}
                 pageSize={7}
             />
-            {shiftData.map((each, index) => {
+            <button onClick={() => {
+                getCurrentWeekShift()
+
+            }}>This Week's Shifts</button>
+            <button onClick={() => {
+                getNextWeekShift()
+
+            }}>Next Week's Shifts</button>
+
+            {thisWeekShift.map((each, index) => {
+                return (
+                    <>
+
+
+
+                        <div key={`${each} ${index}`} className="CardWrapper">
+                            <div key={each.shiftId} className="timeCard">
+                                <div className="date">
+                                    <div className="weekday">{getWeekday(each)}</div>
+                                    <div>{eachDateStr(each)}</div>
+                                </div>
+                                <div className="time">{getTime(each)}</div>
+                                <div className="type">{getType(each)}</div>
+                                <div className="pay">{getPay(each)}</div>
+
+                            </div>
+
+                            <div className="hospitalCard">
+                                {getCertainHospitalDetail(each.hospital_id)}
+                                <div className="applyButton">APPLY</div>
+                            </div>
+
+                        </div>
+                    </>
+                )
+            })}
+
+            {nextWeekShift.map((each, index) => {
                 return (
                     <>
 
