@@ -9,7 +9,7 @@ import { FiSunset } from "react-icons/fi";
 
 export default function InviteSection() {
 
-    const [shiftIdArray, setShiftIdArray] = useState([]);
+    const [invitedShiftIdArray, setInvitedShiftIdArray] = useState([]);
     const [shiftData, setShiftData] = useState([]);
     const [allHospitals, setAllHospitals] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
@@ -107,27 +107,24 @@ export default function InviteSection() {
 
             }
         }
-        // console.log(myDetail)
     }
 
-    function getInvitedCard() {
+    function getInvitedShiftIdArray() {
         const UserShiftIdArray = []
         for (let each = 0; each < myDetail.invited.length; each++) {
             const invited = myDetail.invited[each].shiftId;
             UserShiftIdArray.push(invited)
 
         }
-        setShiftIdArray(UserShiftIdArray)
-        // console.log(shiftIdArray)
+        setInvitedShiftIdArray(UserShiftIdArray)
     }
+
     function showInvitedCard() {
         const invites = []
-        // console.log(shiftIdArray)
-        for (let u = 0; u < shiftIdArray.length; u++) {
+        for (let u = 0; u < invitedShiftIdArray.length; u++) {
             shiftData.map((each) => {
-                if (each.shiftId == shiftIdArray[u]) {
+                if (each.shiftId == invitedShiftIdArray[u]) {
                     invites.push(each)
-                    // console.log(each)
                 }
 
             })
@@ -165,28 +162,36 @@ export default function InviteSection() {
     useEffect(
         () => {
             getShift()
-        }, [])
+        }, [allHospitals])
     useEffect(
         () => {
             getAllUsers()
         }, [])
-
+    // useEffect(
+    //     () => {
+    //         getAllUsers()
+    //     }, [])
 
     return (
         <>
+
             <div className="checkUserInvitation">
-                userid:
+                input your userid to check your invitation:
                 <input
                     type="text"
                     onChange={inputHandler}
                 />
                 <button onClick={() => { getUserDetail(userID) }}>confirm my userID</button>
-                <button onClick={() => { getInvitedCard() }}>submit my userID</button>
+                <button onClick={() => { getInvitedShiftIdArray() }}>submit my userID</button>
                 <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
             </div>
+            {invitedShiftIdArray.length > 0 && <div className="inviteText">
+                <div className="subtitle">You've been invited :)</div>
+            </div>}
             {inviteDetails.map((each, index) => {
                 return (
                     <>
+
                         <div key={`${each} ${index}`} className="CardWrapper">
                             <div key={each.shiftId} className="InviteTimeCard">
                                 <div className="date">
@@ -210,15 +215,6 @@ export default function InviteSection() {
                     </>
                 )
             })}
-
-
-
-
-
-
-
-
-
         </>
 
 

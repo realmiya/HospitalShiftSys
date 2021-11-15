@@ -184,7 +184,13 @@ export default function CardSection() {
 
     useEffect(
         () => {
-            getCurrentWeekShift() 
+
+            if (showThisWeek) {
+                getCurrentWeekShift()
+
+            } else {
+                getNextWeekShift()
+            }
         }, [shiftData])
 
 

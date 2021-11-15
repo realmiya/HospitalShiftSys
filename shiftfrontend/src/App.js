@@ -16,12 +16,11 @@ function App() {
           <div className="shiftCard">
             <div className="inviteText">
               <div className="header1">Shifts</div>
-              <div className="subtitle">You've been invited</div>
             </div>
 
 
             <InviteSection />
-            
+
             <CardSection />
           </div>
 
