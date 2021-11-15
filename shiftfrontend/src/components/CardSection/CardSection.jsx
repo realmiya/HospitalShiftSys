@@ -90,7 +90,7 @@ export default function CardSection() {
 
             <div className="hospitalText">
                 <div className="hospitalName">{name}</div>
-                <div className="hospitalRate"><Rate defaultValue={rate} /></div>
+                <div className="hospitalRate"><Rate disabled defaultValue={rate} /></div>
                 <div className="address">{addLine1}</div>
                 <div className="address">{addLine2}</div>
             </div>

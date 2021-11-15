@@ -147,7 +147,7 @@ export default function InviteSection() {
 
             <div className="hospitalText">
                 <div className="hospitalName">{name}</div>
-                <div className="hospitalRate"><Rate defaultValue={rate} /></div>
+                <div className="hospitalRate"><Rate disabled defaultValue={rate} /></div>
                 <div className="address">{addLine1}</div>
                 <div className="address">{addLine2}</div>
             </div>
@@ -172,7 +172,7 @@ export default function InviteSection() {
         <>
 
             <div className="checkUserInvitation">
-                input your userid to check your invitation:
+                <div className="reminder">input your userId to check your invitation:</div>
                 <input
                     type="text"
                     onChange={inputHandler}

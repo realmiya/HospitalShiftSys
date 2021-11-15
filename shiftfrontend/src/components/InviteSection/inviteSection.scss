@@ -1,5 +1,20 @@
 @import "../../styles/variable.scss";
 
+
+
+.checkUserInvitation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bolder;
+    text-transform: capitalize;
+
+    .reminder {
+        margin: 10px 0
+    }
+}
+
 .styledBtn {
     background-color: $GreenColor;
     color: $primaryBlueColor;
@@ -10,13 +25,6 @@
     border-radius: 5px;
     font-weight: bolder;
     text-transform: capitalize;
-
-}
-
-.checkUserInvitation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
 }
 
@@ -48,7 +56,7 @@
 
         .date {
             display: flex;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 5px;
 
             .weekday {
@@ -59,9 +67,13 @@
                 margin-left: 5px;
             }
         }
+        .time,.type{
+            font-weight: 300;
+
+        }
 
         .pay {
-            font-weight: 700;
+            font-weight: 500;
             margin-top: 10px;
             letter-spacing: 1px;
         }
@@ -87,7 +99,7 @@
 
             .hospitalName {
                 text-transform: capitalize;
-                font-weight: 700;
+                font-weight: 600;
             }
 
         }
@@ -104,13 +116,10 @@
                 background-color: white;
                 border: $primaryBlueColor 2px solid;
                 padding: 3px 5px;
+                margin-right: -75px;
 
             }
         }
-
-        // .declineButton{
-
-        // }
         .hospitalRate {
             display: flex;
         }

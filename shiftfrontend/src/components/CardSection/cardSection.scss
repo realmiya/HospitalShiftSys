@@ -1,16 +1,22 @@
 @import "../../styles/variable.scss";
+
 .weekNav {
     display: flex;
     margin: 20px;
     justify-content: center;
-    .navBtn{
+
+    .navBtn {
         color: rgb(161, 158, 158);
         background-color: whitesmoke;
-        border:rgb(240, 240, 240) 1px solid;
-font-size: 30px;
+        border: rgb(240, 240, 240) 1px solid;
+        font-size: 30px;
     }
-    .currentDate{
-        padding:10px 30px;
+
+    .currentDate {
+        padding: 10px 30px;
+        font-size: 17px;
+        color: black;
+        font-weight: 700;
     }
 }
 
@@ -47,13 +53,19 @@ font-size: 30px;
             .weekday {
                 margin-right: 5px;
             }
-            .icon{
-                margin-left:5px;
+
+            .icon {
+                margin-left: 5px;
             }
         }
+        .time,.type{
+            font-weight: 300;
+
+        }
+
 
         .pay {
-            font-weight: 700;
+            font-weight: 500;
             margin-top: 10px;
             letter-spacing: 1px;
         }
@@ -79,14 +91,17 @@ font-size: 30px;
 
             .hospitalName {
                 text-transform: capitalize;
-                font-weight: 700;
+                font-weight: 600;
+            }
+            .address{
+                font-weight: 300;
             }
 
         }
 
         .applyButton {
             color: white;
-            background-color:$primaryBlueColor;
+            background-color: $primaryBlueColor;
             padding: 5px 15px;
             margin-right: 20px;
             font-weight: 700;
@@ -94,6 +109,7 @@ font-size: 30px;
 
         .hospitalRate {
             display: flex;
+            margin: 10px 0
         }
 
 
