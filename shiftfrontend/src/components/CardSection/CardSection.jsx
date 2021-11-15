@@ -113,7 +113,7 @@ export default function CardSection() {
             const today = new Date(todaystr.split("T")[0]);
             // console.log(today);
             const DateDiff = newDateofShift - today;
-            if (DateDiff < 604800000 && DateDiff > -86400000) {
+            if (DateDiff < 604800000 && DateDiff >=0) {
                 weekShiftArray.push(shiftData[eachShift]);
             };
         }
@@ -150,7 +150,7 @@ export default function CardSection() {
             const todaystr = JSON.stringify(newToday);
             const today = new Date(todaystr.split("T")[0]);
             const DateDiff = newDateofShift - today;
-            if (604799999 < DateDiff && DateDiff < 1209600000) {
+            if (604800000 <= DateDiff && DateDiff < 1209600000) {
                 nextWeekShiftArray.push(shiftData[eachShift]);
             };
         }
