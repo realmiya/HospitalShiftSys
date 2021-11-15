@@ -1,6 +1,16 @@
 .weekNav {
     display: flex;
     margin: 20px;
+    justify-content: center;
+    .navBtn{
+        color: rgb(161, 158, 158);
+        background-color: whitesmoke;
+        border:rgb(240, 240, 240) 1px solid;
+font-size: 30px;
+    }
+    .currentDate{
+        padding:10px 30px;
+    }
 }
 
 .CardWrapper {

@@ -98,7 +98,6 @@ export default function CardSection() {
 
     function getCurrentWeekShift() {
         setShowThisWeek(true);
-
         const weekShiftArray = [];
         console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
@@ -112,11 +111,7 @@ export default function CardSection() {
             if (DateDiff < 691200000 && DateDiff > -86400000) {
                 weekShiftArray.push(shiftData[eachShift]);
             };
-
-
         }
-
-
         setThisWeekShift(weekShiftArray);
 
     }
@@ -188,6 +183,11 @@ export default function CardSection() {
             getDate()
         }, [])
 
+    useEffect(
+        () => {
+            getCurrentWeekShift()
+        }, [])
+
 
 
     return (
@@ -196,14 +196,15 @@ export default function CardSection() {
             <div className="weekNav">
                 <button onClick={() => {
                     getCurrentWeekShift()
-
-                }}><FiChevronLeft /></button>
+                }}
+                    className="navBtn"><FiChevronLeft /></button>
 
                 <div className="currentDate">{todayDate} - {weekLaterDate}</div>
                 <button onClick={() => {
                     getNextWeekShift()
 
-                }}><FiChevronRight /></button>
+                }}
+                    className="navBtn"><FiChevronRight /></button>
             </div>
 
             {showThisWeek ? thisWeekShift.map((each, index) => {
