@@ -3,7 +3,7 @@ import axios from 'axios';
 import './cardSection.scss';
 import { Rate } from 'antd';
 import 'antd/dist/antd.css';
-
+import { Pagination } from 'antd';
 
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
@@ -104,7 +104,13 @@ export default function CardSection() {
 
     return (
         <>
-
+            <Pagination
+                // showSizeChanger
+                //   onShowSizeChange={onShowSizeChange}
+                defaultCurrent={3}
+                total={14}
+                pageSize={7}
+            />
             {shiftData.map((each, index) => {
                 return (
                     <>
