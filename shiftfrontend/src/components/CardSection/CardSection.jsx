@@ -5,7 +5,7 @@ import { Rate } from 'antd';
 import 'antd/dist/antd.css';
 import { FiSun } from "react-icons/fi";
 import { FiMoon } from "react-icons/fi";
-
+import { FiSunset } from "react-icons/fi";
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
     const [allHospitals, setAllHospitals] = useState([]);
@@ -119,9 +119,14 @@ export default function CardSection() {
     function getTimeIcon(each) {
         const timestr = getTime(each)
         const signal = timestr.slice(5, 7);
+        const afternoonTimeClock = timestr.slice(1, 2);
         return (
-            <div> {signal == 'AM' ?
-                <FiSun /> : <FiMoon />}
+
+            <div>
+                {signal == 'AM' && <FiSun />}
+                {signal == 'PM' && afternoonTimeClock > 6 && <FiMoon />}
+                {signal == 'PM' && afternoonTimeClock < 6 && <FiSunset />}
+
             </div>
         )
 
@@ -191,7 +196,7 @@ export default function CardSection() {
                                 </div>
                                 <div className="time">
                                     {getTime(each)}
-                                    
+
                                 </div>
 
                                 <div className="type">{getType(each)}</div>
@@ -218,6 +223,8 @@ export default function CardSection() {
                                     <div className="date">
                                         <div className="weekday">{getWeekday(each)}</div>
                                         <div>{eachDateStr(each)}</div>
+                                        <div className="icon"> {getTimeIcon(each)}</div>
+
                                     </div>
                                     <div className="time">{getTime(each)}</div>
                                     <div className="type">{getType(each)}</div>
