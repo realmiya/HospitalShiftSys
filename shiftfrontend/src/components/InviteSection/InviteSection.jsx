@@ -167,10 +167,6 @@ export default function InviteSection() {
         () => {
             getAllUsers()
         }, [])
-    // useEffect(
-    //     () => {
-    //         getAllUsers()
-    //     }, [])
 
     return (
         <>
@@ -181,13 +177,19 @@ export default function InviteSection() {
                     type="text"
                     onChange={inputHandler}
                 />
-                <button onClick={() => { getUserDetail(userID) }}>confirm my userID</button>
-                <button onClick={() => { getInvitedShiftIdArray() }}>submit my userID</button>
-                <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
+                <button className="styledBtn" onClick={() => { getUserDetail(userID) }}>confirm my userID</button>
+                <button className="styledBtn" onClick={() => { getInvitedShiftIdArray() }}>check whether i have been invited</button>
+
             </div>
-            {invitedShiftIdArray.length > 0 && <div className="inviteText">
-                <div className="subtitle">You've been invited :)</div>
-            </div>}
+            {invitedShiftIdArray.length > 0 &&
+                <>
+                    <div className="inviteText">
+                        <div className="subtitle">You've been invited :)</div>
+                    </div>
+                    <button className="styledBtn" onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
+                </>
+
+            }
             {inviteDetails.map((each, index) => {
                 return (
                     <>

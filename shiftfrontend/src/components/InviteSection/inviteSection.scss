@@ -1,7 +1,19 @@
+.styledBtn{
+    background-color:#3AEBB6;
+    color:white;
+    border: none;
+    margin:5px;
+    padding: 5px 10px;
+    box-shadow: 5px 6px #888888;
+    border-radius: 5px;
+    font-weight: bolder;
+    text-transform: capitalize;
+
+}
 .checkUserInvitation{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 
 }
 

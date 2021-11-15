@@ -4,8 +4,11 @@
     align-items:center;
     font-weight: bold;
     background-color: white;
-    // margin:10px 0;
+
     padding:15px 30px;
+    .appLogo{
+        width:150px;
+    }
     .menu{
         display: flex;
         margin:0 30px;

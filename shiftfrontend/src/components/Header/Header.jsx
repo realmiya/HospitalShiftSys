@@ -3,7 +3,8 @@ import "./header.scss"
 export default function Header() {
     return (
         <header className="header">
-            <div>uPAGED</div>
+            {/* <div>uPAGED</div> */}
+            <img src="logo.png" alt="appLogo" className="appLogo" />
             <div className="menu">
                 <div className="menuOption">Find Work</div>
                 <div className="menuOption">Timesheets</div>
