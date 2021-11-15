@@ -108,7 +108,7 @@ export default function CardSection() {
             const today = new Date(todaystr.split("T")[0]);
             const DateDiff = newDateofShift - today;
             console.log("checkagain"+DateDiff)
-            if (DateDiff < 691200000 && DateDiff >= 86400000) {
+            if (DateDiff <= 604800000 && DateDiff >= 86400000) {
                 weekShiftArray.push(shiftData[eachShift]);
             };
         }
