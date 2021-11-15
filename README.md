@@ -10,6 +10,9 @@ cd shiftfrontend use `npm start`  to run the frontend
 
 after inputing userid, confirm , and submit , then click show my shift invited card, you can see the invitation belongs to the specfic user.
 you can try userid from 1 to 4.
+
+must click left arrow button to show the current 7 days' shifts available
+and click right arrow button to show the next 7 days' shifts available
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

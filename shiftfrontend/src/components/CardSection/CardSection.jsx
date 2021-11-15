@@ -8,6 +8,7 @@ import { FiMoon } from "react-icons/fi";
 import { FiSunset } from "react-icons/fi";
 import { FiChevronLeft } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
+
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
     const [allHospitals, setAllHospitals] = useState([]);
@@ -15,7 +16,9 @@ export default function CardSection() {
     const [nextWeekShift, setNextWeekShift] = useState([]);
     const [showThisWeek, setShowThisWeek] = useState(true);
     const [todayDate, setTodayDate] = useState("");
-    const [weekLaterDate, setWeekLaterDate] = useState("");
+    const [weekEndDate, setWeekEndDate] = useState("");
+    const [newWeekStartDate, setNewWeekStartDate] = useState("");
+    const [newWeekEndDate, setNewWeekEndDate] = useState("");
 
 
     function getWeekday(each) {
@@ -98,23 +101,27 @@ export default function CardSection() {
 
     function getCurrentWeekShift() {
         setShowThisWeek(true);
+        console.log("current, so "+ showThisWeek);
+        
         const weekShiftArray = [];
-        console.log("final" + shiftData.length)
+        // console.log("final" + shiftData.length)
         for (let eachShift = 0; eachShift < shiftData.length; eachShift++) {
             const newDateofShift = new Date(shiftData[eachShift].date)
             const newToday = new Date();
-            console.log(newToday);
+            // console.log(newToday);
             const todaystr = JSON.stringify(newToday);
             const today = new Date(todaystr.split("T")[0]);
-            console.log(today);
+            // console.log(today);
             const DateDiff = newDateofShift - today;
-            if (DateDiff < 691200000 && DateDiff > -86400000) {
+            if (DateDiff < 604800000 && DateDiff > -86400000) {
                 weekShiftArray.push(shiftData[eachShift]);
             };
         }
         setThisWeekShift(weekShiftArray);
-
     }
+
+
+
     function getTimeIcon(each) {
         const timestr = getTime(each)
         const signal = timestr.slice(5, 7);
@@ -133,6 +140,7 @@ export default function CardSection() {
 
     function getNextWeekShift() {
         setShowThisWeek(false);
+        // console.log("next so "+showThisWeek);
 
         const nextWeekShiftArray = [];
         console.log("final" + shiftData.length)
@@ -142,7 +150,7 @@ export default function CardSection() {
             const todaystr = JSON.stringify(newToday);
             const today = new Date(todaystr.split("T")[0]);
             const DateDiff = newDateofShift - today;
-            if (691200000 < DateDiff && DateDiff < 1296000000) {
+            if (604800000 < DateDiff && DateDiff < 1209600000) {
                 nextWeekShiftArray.push(shiftData[eachShift]);
             };
         }
@@ -150,20 +158,22 @@ export default function CardSection() {
     }
 
     function getDate() {
+        function getWantedStr(input){
+            const inputArray=input.toString().split(" ");
+            const ProcessedDate = `${inputArray[1]} ${inputArray[2]} ${inputArray[3]}`;
+            return ProcessedDate
+        }
         const newToday = new Date();
-        setTodayDate(newToday);
-        const dateArray = newToday.toString().split(" ");
-        const ProcessedDate = `${dateArray[1]} ${dateArray[2]} ${dateArray[3]}`;
-        setTodayDate(ProcessedDate);
-        // console.log(typeof ProcessedDate,ProcessedDate);
+        setTodayDate(getWantedStr(newToday));
         const oneWeekLater = new Date();
-        oneWeekLater.setDate(newToday.getDate() + 7);
-        console.log(oneWeekLater);
-        const oneWeekLaterArray = oneWeekLater.toString().split(" ");
-        const oneWeekLaterStr = `${oneWeekLaterArray[1]} ${oneWeekLaterArray[2]} ${oneWeekLaterArray[3]}`;
-        // return [ProcessedDate,oneWeekLaterStr]
-        setWeekLaterDate(oneWeekLaterStr);
-
+        oneWeekLater.setDate(newToday.getDate() + 6);
+        setWeekEndDate(getWantedStr(oneWeekLater))
+        const newWeekDate = new Date();
+        newWeekDate.setDate(newToday.getDate() + 7);
+        setNewWeekStartDate(getWantedStr(newWeekDate))
+        const newWeekEnd = new Date();
+        newWeekEnd.setDate(newToday.getDate() +13);
+        setNewWeekEndDate(getWantedStr(newWeekEnd))
     }
 
 
@@ -186,6 +196,7 @@ export default function CardSection() {
     useEffect(
         () => {
             getCurrentWeekShift()
+            console.log(showThisWeek)
         }, [])
 
 
@@ -198,8 +209,10 @@ export default function CardSection() {
                     getCurrentWeekShift()
                 }}
                     className="navBtn"><FiChevronLeft /></button>
+                    {showThisWeek?<div className="currentDate">{todayDate} - {weekEndDate}</div>:
+                    <div className="currentDate">{newWeekStartDate} - {newWeekEndDate}</div>}
 
-                <div className="currentDate">{todayDate} - {weekLaterDate}</div>
+                
                 <button onClick={() => {
                     getNextWeekShift()
 
