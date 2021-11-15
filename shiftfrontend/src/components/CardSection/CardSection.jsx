@@ -175,12 +175,12 @@ export default function CardSection() {
     useEffect(
         () => {
             getShift()
-        }, [])
+        }, [allHospitals])
 
     useEffect(
         () => {
             getDate()
-        }, [])
+        }, [shiftData])
 
     useEffect(
         () => {
