@@ -3,7 +3,6 @@ import axios from 'axios';
 import './cardSection.scss';
 import { Rate } from 'antd';
 import 'antd/dist/antd.css';
-import { Pagination } from 'antd';
 
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
@@ -122,7 +121,7 @@ export default function CardSection() {
             const today = new Date(todaystr.split("T")[0]);
             console.log(today);
             const DateDiff = newDateofShift - today;
-            if (691200000<DateDiff&& DateDiff < 1296000000) {
+            if (691200000 < DateDiff && DateDiff < 1296000000) {
                 nextWeekShiftArray.push(shiftData[eachShift]);
             };
 
@@ -163,20 +162,17 @@ export default function CardSection() {
 
     return (
         <>
-            <Pagination
-                //   onShowSizeChange={onShowSizeChange}
-                defaultCurrent={1}
-                total={shiftData.length}
-                pageSize={7}
-            />
-            <button onClick={() => {
-                getCurrentWeekShift()
+            <div className="weekNav">
+                <button onClick={() => {
+                    getCurrentWeekShift()
 
-            }}>This Week's Shifts</button>
-            <button onClick={() => {
-                getNextWeekShift()
+                }}>This Week's Shifts</button>
+                <button onClick={() => {
+                    getNextWeekShift()
 
-            }}>Next Week's Shifts</button>
+                }}>Next Week's Shifts</button>
+            </div>
+
 
             {thisWeekShift.map((each, index) => {
                 return (
