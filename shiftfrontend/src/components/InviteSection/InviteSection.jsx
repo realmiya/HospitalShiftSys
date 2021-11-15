@@ -174,23 +174,19 @@ export default function InviteSection() {
 
     return (
         <>
-            <div className="userID">
+            <div className="checkUserInvitation">
                 userid:
-            <input
+                <input
                     type="text"
                     onChange={inputHandler}
                 />
                 <button onClick={() => { getUserDetail(userID) }}>confirm my userID</button>
+                <button onClick={() => { getInvitedCard() }}>submit my userID</button>
+                <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
             </div>
-            <button onClick={() => { getInvitedCard() }}>submit my userID</button>
-            <button onClick={() => { showInvitedCard() }}>Show My invited shift card</button>
-
             {inviteDetails.map((each, index) => {
                 return (
                     <>
-
-
-
                         <div key={`${each} ${index}`} className="CardWrapper">
                             <div key={each.shiftId} className="InviteTimeCard">
                                 <div className="date">
