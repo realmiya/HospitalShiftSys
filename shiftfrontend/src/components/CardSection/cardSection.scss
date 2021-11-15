@@ -1,7 +1,8 @@
-.weekNav{
+.weekNav {
     display: flex;
-    margin:20px;
+    margin: 20px;
 }
+
 .CardWrapper {
     display: flex;
     justify-content: center;
@@ -15,7 +16,7 @@
     .timeCard {
         display: flex;
         flex-direction: column;
-        min-height:150px;
+        min-height: 150px;
         width: 280px;
         justify-content: center;
         align-items: flex-start;
@@ -27,7 +28,6 @@
         border-bottom-left-radius: 10px;
         border-top-left-radius: 10px;
 
-
         .date {
             display: flex;
             font-weight: 700;
@@ -35,6 +35,9 @@
 
             .weekday {
                 margin-right: 5px;
+            }
+            .icon{
+                margin-left:5px;
             }
         }
 
@@ -52,31 +55,34 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height:150px;
+        min-height: 150px;
         width: 490px;
         background-color: white;
         margin: 10px 20px 10px 5px;
         padding: 10px 20px;
+
         .hospitalText {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            .hospitalName{
+
+            .hospitalName {
                 text-transform: capitalize;
                 font-weight: 700;
             }
-            
+
         }
 
         .applyButton {
             color: white;
             background-color: #29334F;
-            padding:5px 15px;
+            padding: 5px 15px;
             margin-right: 20px;
             font-weight: 700;
         }
-        .hospitalRate{
-            display:flex;
+
+        .hospitalRate {
+            display: flex;
         }
 
 

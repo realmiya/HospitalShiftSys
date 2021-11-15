@@ -3,6 +3,8 @@ import axios from 'axios';
 import './cardSection.scss';
 import { Rate } from 'antd';
 import 'antd/dist/antd.css';
+import { FiSun } from "react-icons/fi";
+import { FiMoon } from "react-icons/fi";
 
 export default function CardSection() {
     const [shiftData, setShiftData] = useState([]);
@@ -114,6 +116,16 @@ export default function CardSection() {
         setThisWeekShift(weekShiftArray);
 
     }
+    function getTimeIcon(each) {
+        const timestr = getTime(each)
+        const signal = timestr.slice(5, 7);
+        return (
+            <div> {signal == 'AM' ?
+                <FiSun /> : <FiMoon />}
+            </div>
+        )
+
+    }
 
     function getNextWeekShift() {
         setShowThisWeek(false);
@@ -175,10 +187,17 @@ export default function CardSection() {
                                 <div className="date">
                                     <div className="weekday">{getWeekday(each)}</div>
                                     <div>{eachDateStr(each)}</div>
+                                    <div className="icon"> {getTimeIcon(each)}</div>
                                 </div>
-                                <div className="time">{getTime(each)}</div>
+                                <div className="time">
+                                    {getTime(each)}
+                                    
+                                </div>
+
                                 <div className="type">{getType(each)}</div>
                                 <div className="pay">{getPay(each)}</div>
+
+
 
                             </div>
 
